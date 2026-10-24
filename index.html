@@ -459,7 +459,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
   <button class="modal-close" type="button" id="modalClose" aria-label="닫기">×</button>
   <div class="modal-box" id="modalBox">
-    <video id="modalVideo" controls playsinline preload="none"></video>
+    <video id="modalVideo" controls controlslist="nodownload" disablepictureinpicture playsinline preload="none"></video>
     <div class="modal-info">
       <span class="cat" id="modalCat"></span>
       <h3 id="modalTitle"></h3>
@@ -666,6 +666,9 @@ $("#workGroups").addEventListener("click", e => {
   openWork(workById[b.dataset.id]);
 });
 $("#modalClose").addEventListener("click", closeWork);
+// 영상·썸네일에서 우클릭 저장 메뉴를 막는다
+document.addEventListener("contextmenu", e => { if (e.target.closest("video, .thumb, .film")) e.preventDefault(); });
+mVideo.addEventListener("dragstart", e => e.preventDefault());
 modal.addEventListener("click", e => { if (e.target === modal) closeWork(); });
 addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeWork(); });
 
