@@ -7,7 +7,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Gothic+A1:wght@500;700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Orbitron:wght@700&family=Gothic+A1:wght@500;700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
 /* Layout: 밝은 작업대. 큰 글씨 몇 줄과 넓은 여백, 섹션마다 한 가지 메시지.
    작업물은 실제 영상: 커서를 올리면 프레임이 스크럽되고, 누르면 페이지 안에서 재생된다. */
@@ -190,6 +190,52 @@ section { position: relative; scroll-margin-top: 80px; }
 .shorts .work h4 { font-size: 1.0625rem; }
 .work p { margin: 0; color: var(--muted); font-size: .9375rem; line-height: 1.55; }
 
+/* 모션 타이포: 영상이 아니라 무대 위 글자를 브라우저에서 직접 움직인다 */
+@font-face { font-family: "NanumSquare Neo Web"; src: url("fonts/nanumsquareneo-eb-sub.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@property --gx { syntax: "<number>"; inherits: true; initial-value: 0; }
+@property --sw { syntax: "<number>"; inherits: true; initial-value: -1; }
+.type-sub { margin: calc(clamp(36px, 5vw, 64px) * -.6) 0 clamp(28px, 4vw, 44px); font-size: var(--step-1); color: var(--muted); }
+.stage {
+  position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; isolation: isolate;
+  background: #24113f; container-type: inline-size; user-select: none; -webkit-user-select: none;
+  font-family: "Orbitron", "NanumSquare Neo Web", "Gothic A1", sans-serif; font-weight: 700; line-height: 1;
+  box-shadow: inset 0 0 0 1px rgba(36, 17, 63, .12); animation: type-flow 5s linear infinite;
+}
+.stage.paused { animation-play-state: paused; }
+@keyframes type-flow { to { --gx: 1; } }
+.stage-tag { position: absolute; right: 14px; bottom: 12px; z-index: 2; font: 700 clamp(11px, 1.2vw, 13px)/1 var(--f-mono); letter-spacing: .04em; color: rgba(255, 255, 255, .62); transition: color .3s; }
+.stage.light .stage-tag { color: rgba(36, 17, 63, .55); }
+.tw { position: absolute; white-space: nowrap; transform: translate(-50%, -50%) rotate(var(--rot, 0deg)); --sw: -1; }
+.tw.purple { --c1: #4a1fb8; --c2: #7b3ff2; --c3: #2a86c6; }
+.tw.lilac { --c1: #8d6ff2; --c2: #cdbdff; --c3: #5fcfe4; }
+.tw.lime { --c1: #b5ec2f; --c2: #efffa8; --c3: #8fdc24; }
+.tc { display: inline-block; position: relative; }
+/* 글자 안에서 흐르는 그라데이션과 사선 빛. --ww(단어 폭)·--ox(글자 위치)는 em 단위라 무대 크기와 무관하다 */
+.tg {
+  display: inline-block; color: transparent; -webkit-background-clip: text; background-clip: text;
+  background-image: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, .92) 50%, transparent 58%), linear-gradient(90deg, var(--c1), var(--c2), var(--c3), var(--c1));
+  background-size: calc(var(--ww) * 3em) 100%, calc(var(--ww) * 2em) 100%;
+  background-repeat: no-repeat, repeat-x;
+  background-position: calc((var(--sw) * 1.6 - 1.8) * var(--ww) * 1em - var(--ox) * 1em) 0, calc((var(--gx) * -2 * var(--ww) - var(--ox)) * 1em) 0;
+}
+.tc .tg + .tg { position: absolute; left: 0; top: 0; }
+.tc.sl .tg:nth-child(1) { clip-path: inset(-10% -10% 65% -10%); }
+.tc.sl .tg:nth-child(2) { clip-path: inset(34% -10% 32% -10%); }
+.tc.sl .tg:nth-child(3) { clip-path: inset(66% -10% -10% -10%); }
+.type-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 18px; }
+.scenes { display: flex; gap: 8px; flex-wrap: wrap; }
+.scene-btn { position: relative; overflow: hidden; font: 700 15px/1 var(--f-mono); padding: 12px 16px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; transition: color .2s, border-color .2s; }
+.scene-btn.on { color: var(--ink); border-color: var(--ink); }
+.scene-btn i { position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); }
+.type-try { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; margin-top: clamp(28px, 4vw, 40px); padding: 20px; border-radius: 12px; background: var(--bg-2); }
+.type-try label { font-weight: 700; font-size: var(--step-1); }
+.type-try input { flex: 1 1 220px; min-width: 0; font: 600 1.125rem/1.2 var(--f-body); padding: 14px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.has-cursor .type-try input { cursor: text; }
+.modes { display: flex; gap: 6px; flex-wrap: wrap; }
+.mode { font: 600 1rem/1 var(--f-body); padding: 12px 14px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; }
+.mode[aria-checked="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.type-try .btn { padding: 14px 22px; }
+
 /* 재생 창 */
 .modal { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
 .modal-box { width: min(100%, 1100px); max-height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 28px; align-items: center; }
@@ -331,6 +377,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <a class="brand" href="#hero" data-cursor="link"><span data-c="nameLatin">SEUNGBIN</span><i>.</i>EDIT</a>
     <nav class="nav" aria-label="섹션">
       <a href="#works" data-cursor="link">작업물</a>
+      <a href="#type" data-cursor="link">타이포</a>
       <a href="#revisions" data-cursor="link">빠른 수정</a>
       <a href="#game" data-cursor="link">잘라보기</a>
       <a href="#qc" data-cursor="link">검수</a>
@@ -387,6 +434,24 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
     <div class="wrap">
       <h2 class="sec-title" data-reveal><span class="lat">Selected Works</span></h2>
       <div id="workGroups"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="type">
+    <div class="wrap">
+      <h2 class="sec-title" data-reveal>글자도 <em>박자에 맞춰</em><br>움직입니다</h2>
+      <p class="type-sub" data-reveal>네온 모션 타이포그래피. 아래 화면은 영상이 아니라 지금 브라우저에서 움직이고 있어요.</p>
+      <div class="stage" id="stage" role="img" aria-label="모션 타이포그래피 시연: MOVE WITH THE BEAT, TYPE IN MOTION, 리듬을 글자로, LIGHT IN EVERY LETTER"><span class="stage-tag" aria-hidden="true">LIVE</span></div>
+      <div class="type-bar">
+        <div class="scenes" id="scenes"></div>
+        <button class="replay" type="button" id="typeVideo" data-cursor="link">렌더 영상 보기 ▶</button>
+      </div>
+      <form class="type-try" id="typeTry" autocomplete="off">
+        <label for="typeInput">직접 써보기</label>
+        <input id="typeInput" maxlength="14" placeholder="이름이나 채널명" enterkeyhint="go">
+        <div class="modes" id="modes" role="radiogroup" aria-label="효과"></div>
+        <button class="btn primary" type="submit" data-cursor="link">움직이기</button>
+      </form>
     </div>
   </section>
 
@@ -487,7 +552,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 const CONFIG = {
   name: "정승빈",
   nameLatin: "SEUNGBIN",
-  tagline: "쇼핑 쇼츠 · 예능 · 게임 · 브이로그",
+  tagline: "쇼핑 쇼츠 · 예능 · 게임 · 브이로그 · 모션 타이포",
   email: "seungbinbugae@gmail.com",
   discord: "war_bin",
   hours: "오전 7시 ~ 오후 11시",
@@ -534,6 +599,28 @@ const CONFIG = {
       credit: "원본: 이소리 저소리 (CC BY) · 음악: Bossa Antigua, Kevin MacLeod (CC BY 3.0)", source: "https://www.youtube.com/watch?v=8rnKqib3s80" },
     // 롱폼 「미쿠의 역사」: url에 유튜브 링크를 넣으면 카드가 나타납니다
     { id: "miku", group: "wide", category: "롱폼", title: "미쿠의 역사", who: "내 채널 롱폼", duration: 0, credit: "", url: "" },
+    // 모션 타이포 섹션의 "렌더 영상 보기"
+    { id: "type_neon", group: "type", category: "모션 타이포그래피", title: "Type in Motion", who: "직접 쓴 문구 4장면 · 1080p 렌더", duration: 16,
+      credit: "서체: Orbitron, 나눔스퀘어 네오 (SIL OFL)" },
+  ],
+
+  // 모션 타이포 무대: [글자, 중심x, 중심y, 상자 폭, 상자 높이, 등장 시각(초), 효과, 색, 기울기]
+  // 좌표는 1920×1080 기준. 효과 flip 플립 · slice 조각 · track 자간 · build 조립
+  typeScenes: [
+    { label: "MOVE", bg: "light", words: [
+      ["MOVE", 960, 385, 1370, 270, .1, "flip", "purple", 0],
+      ["WITH THE BEAT", 960, 710, 1320, 140, .72, "track", "purple", 0] ] },
+    { label: "TYPE", bg: "dark", words: [
+      ["TYPE", 590, 340, 940, 265, .1, "slice", "lilac", 7],
+      ["IN", 360, 730, 205, 125, .66, "flip", "lime", -5],
+      ["MOTION", 1210, 705, 1160, 235, .84, "track", "lilac", -5] ] },
+    { label: "리듬", bg: "light", words: [
+      ["리듬을", 680, 330, 1060, 270, .1, "build", "purple", -4],
+      ["글자로", 1240, 725, 1050, 270, .86, "build", "purple", 4] ] },
+    { label: "LIGHT", bg: "dark", words: [
+      ["LIGHT", 960, 285, 1400, 240, .1, "flip", "lilac", 0],
+      ["IN EVERY", 960, 560, 795, 115, .62, "track", "lime", 0],
+      ["LETTER", 960, 825, 1350, 215, .94, "slice", "lilac", 0] ] },
   ],
 
   process: ["소스 검색·선별", "구성", "컷 편집", "자막", "효과음·BGM", "최종 검수"],
@@ -671,6 +758,134 @@ document.addEventListener("contextmenu", e => { if (e.target.closest("video, .th
 mVideo.addEventListener("dragstart", e => e.preventDefault());
 modal.addEventListener("click", e => { if (e.target === modal) closeWork(); });
 addEventListener("keydown", e => { if (e.key === "Escape" && !modal.hidden) closeWork(); });
+
+/* ---------- 모션 타이포: 장면을 무대에 짓고 GSAP로 움직인다 ---------- */
+const stage = $("#stage"), TYPE_W = 1920, TYPE_H = 1080, SCENE_SEC = 4;
+const TYPE_BG = { light: "#f1eff7", dark: "#24113f" };
+const MODES = [["flip", "플립"], ["slice", "조각"], ["track", "자간"], ["build", "조립"]];
+const measureCtx = document.createElement("canvas").getContext("2d");
+let typeTl = null, typeIdx = 0, typeInView = false, typeMode = "flip";
+
+// 100px로 놓고 재서 상자(w×h)에 맞춘다. 크기는 무대 폭 비율(cqw), 그라데이션 기준은 em이라 화면 크기가 바뀌어도 그대로다
+function buildWord([text, cx, cy, w, h, , mode, color, rot]) {
+  const el = document.createElement("div");
+  el.className = `tw ${color}`;
+  el.style.left = cx / TYPE_W * 100 + "%";
+  el.style.top = cy / TYPE_H * 100 + "%";
+  el.style.setProperty("--rot", rot + "deg");
+  [...text].forEach(c => {
+    const box = document.createElement("span");
+    box.className = mode === "slice" ? "tc sl" : "tc";
+    for (let k = 0; k < (mode === "slice" ? 3 : 1); k++) {
+      const g = document.createElement("span");
+      g.className = "tg"; g.textContent = c === " " ? " " : c;
+      box.append(g);
+    }
+    el.append(box);
+  });
+  el.style.fontSize = "100px";
+  stage.append(el);
+  const widthEm = el.scrollWidth / 100;
+  $$(".tc", el).forEach(box => box.style.setProperty("--ox", box.offsetLeft / 100));
+  measureCtx.font = `700 100px ${getComputedStyle(stage).fontFamily}`;
+  const m = measureCtx.measureText(text);
+  const heightEm = (m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) / 100 || .75;
+  el.style.setProperty("--ww", widthEm);
+  el.style.fontSize = Math.min(w / widthEm, h / heightEm) / TYPE_W * 100 + "cqw";
+  return el;
+}
+
+function enterWord(tl, el, mode, at, wi) {
+  const chars = [...el.children], n = chars.length, mid = (n - 1) / 2;
+  if (mode === "flip") {
+    tl.from(chars, { rotationY: -100, opacity: 0, transformPerspective: 500, duration: .7, ease: "back.out(1.6)", stagger: .045 }, at);
+  } else if (mode === "track") {
+    // 넓게 벌어져 들어와서 한 번 더 조였다가 제자리
+    tl.from(chars, { xPercent: i => (i - mid) * 70, opacity: 0, duration: .8, ease: "expo.out" }, at)
+      .to(chars, { xPercent: i => (i - mid) * -7, duration: .22, ease: "power2.in" }, at + .6)
+      .to(chars, { xPercent: 0, duration: .45, ease: "back.out(3)" }, at + .82);
+  } else if (mode === "slice") {
+    const parts = $$(".tg", el);
+    tl.from(parts, { xPercent: j => (j % 2 ? 1 : -1) * (70 + (j % 3) * 30), opacity: 0, duration: .7, ease: "expo.out", stagger: .02 }, at);
+  } else {
+    // 조립: 단어마다 반대 방향에서 낱글자가 모인다
+    const dir = wi % 2 ? 1 : -1;
+    tl.from(chars, { xPercent: i => dir * (140 + i * 45), rotation: dir * -14, opacity: 0, duration: .8, ease: "expo.out", stagger: { each: .06, from: dir > 0 ? "end" : "start" } }, at);
+  }
+  // 정착 뒤 사선 빛이 글자 안을 지나가고, 첫 단어는 짧게 색이 튄다
+  tl.fromTo(el, { "--sw": -1 }, { "--sw": 1.25, duration: 1.1, ease: "power2.inOut" }, at + .85);
+  if (wi === 0) {
+    tl.set(el, { filter: "hue-rotate(75deg) saturate(1.8)" }, at + 2)
+      .set(el, { filter: "none" }, at + 2.07)
+      .set(el, { filter: "hue-rotate(-55deg) brightness(1.25)" }, at + 2.14)
+      .set(el, { filter: "none" }, at + 2.2);
+  }
+  // 퇴장: 낱글자가 납작하게 접히며 사라진다
+  tl.to(chars, { scaleX: .1, opacity: 0, duration: .3, ease: "power3.in", stagger: .015 }, SCENE_SEC - .5);
+}
+
+function showScene(scene, idx) {
+  typeTl?.kill();
+  $$(".tw", stage).forEach(e => e.remove());
+  typeIdx = idx;
+  stage.classList.toggle("light", scene.bg === "light");
+  $$(".scene-btn").forEach((b, i) => { b.classList.toggle("on", i === idx); b.firstChild.style.transform = "scaleX(0)"; });
+  const els = scene.words.map(buildWord);
+  if (!anim) { stage.style.background = TYPE_BG[scene.bg]; return; }
+  const chip = $$(".scene-btn")[idx]?.firstChild;
+  typeTl = gsap.timeline({
+    paused: !typeInView,
+    onUpdate: () => { if (chip) chip.style.transform = `scaleX(${typeTl.progress()})`; },
+    onComplete: () => showScene(CONFIG.typeScenes[(idx + 1) % CONFIG.typeScenes.length], (idx + 1) % CONFIG.typeScenes.length),
+  });
+  typeTl.to(stage, { backgroundColor: TYPE_BG[scene.bg], duration: .35 }, 0);
+  els.forEach((el, wi) => enterWord(typeTl, el, scene.words[wi][6], scene.words[wi][5], wi));
+  typeTl.set({}, {}, SCENE_SEC);
+}
+
+$("#scenes").innerHTML = CONFIG.typeScenes.map((s, i) => `<button type="button" class="scene-btn" data-i="${i}" data-cursor="link"><i></i>${esc(s.label)}</button>`).join("");
+$("#scenes").addEventListener("click", e => {
+  const b = e.target.closest(".scene-btn"); if (!b) return;
+  showScene(CONFIG.typeScenes[+b.dataset.i], +b.dataset.i);
+});
+$("#modes").innerHTML = MODES.map(([k, label]) => `<button type="button" class="mode" role="radio" aria-checked="${k === typeMode}" data-mode="${k}">${label}</button>`).join("");
+$("#modes").addEventListener("click", e => {
+  const b = e.target.closest(".mode"); if (!b) return;
+  typeMode = b.dataset.mode;
+  $$(".mode").forEach(m => m.setAttribute("aria-checked", m === b));
+});
+
+// 방문자가 쓴 글자로 장면을 하나 만들어 재생하고, 끝나면 데모로 돌아간다
+const TRY_LAYOUT = { 1: [[540, 1500, 330]], 2: [[380, 1500, 270], [720, 1500, 270]], 3: [[290, 1500, 210], [540, 1500, 210], [790, 1500, 210]] };
+$("#typeTry").addEventListener("submit", e => {
+  e.preventDefault();
+  const words = $("#typeInput").value.trim().split(/\s+/).filter(Boolean);
+  if (!words.length) { $("#typeInput").focus(); return; }
+  const half = Math.ceil(words.length / 2);
+  const lines = words.length <= 3 ? words : [words.slice(0, half).join(" "), words.slice(half).join(" ")];
+  const scene = { bg: "dark", words: lines.map((t, i) => {
+    const [cy, w, h] = TRY_LAYOUT[lines.length][i];
+    return [t, 960, cy, w, h, .1 + i * .35, typeMode, i % 2 ? "lime" : "lilac", 0];
+  }) };
+  const r = stage.getBoundingClientRect();
+  if (r.top < 0 || r.bottom > innerHeight) stage.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  typeInView = true;
+  showScene(scene, -1);
+  typeTl?.play();
+});
+
+$("#typeVideo").addEventListener("click", () => openWork(workById.type_neon));
+new IntersectionObserver(([en]) => {
+  typeInView = en.isIntersecting;
+  stage.classList.toggle("paused", !typeInView);
+  if (typeTl) typeInView && modal.hidden ? typeTl.play() : typeTl.pause();
+}, { threshold: .25 }).observe(stage);
+
+// 글꼴이 준비된 뒤에 재야 상자 맞춤이 정확하다
+Promise.race([
+  Promise.all([document.fonts.load('700 100px "Orbitron"', "MOVE"), document.fonts.load('700 100px "NanumSquare Neo Web"', "리듬을 글자로")]),
+  new Promise(r => setTimeout(r, 3000)),
+]).catch(() => {}).then(() => showScene(CONFIG.typeScenes[0], 0));
 
 /* ---------- 수치 / 과정 / 검수 / 연락처 / 마퀴 ---------- */
 $("#statList").innerHTML = CONFIG.stats.map(s => `
