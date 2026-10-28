@@ -1,5 +1,6 @@
 /* The existing bright editing-room identity, extended with real work. */
 body { margin:0; }
+.btn.primary:hover { color:var(--bg); }
 .hero-layout { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,1fr); align-items:center; gap:48px; }
 .hero-title { min-width:0; font-size:clamp(3rem,6.6vw,6.5rem); }
 .hero-preview { min-width:0; display:block; text-decoration:none; transform:rotate(2deg); margin-top:32px; }
