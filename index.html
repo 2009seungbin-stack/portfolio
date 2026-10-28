@@ -652,19 +652,19 @@ const CONFIG = {
 
   works: [
     ...window.STREAMER_PORTFOLIO.works,
-    { id: "shop_spinner", group: "shorts", category: "쇼핑 쇼츠", title: "뚜껑만 바꿨는데 탈수기가 채칼이 됐어요", who: "최은경 · 야채탈수기·채칼", duration: 18.9,
+    { id: "shop_spinner", poster: "poster_b.jpg", group: "shorts", category: "쇼핑 쇼츠", title: "뚜껑만 바꿨는데 탈수기가 채칼이 됐어요", who: "최은경 · 야채탈수기·채칼", duration: 18.9,
       credit: "원본: 최은경의 관리사무소", drive: "https://drive.google.com/file/d/1QdWif6mOuRFlftc9HzVSj1B_wH_IyNrC/view" },
-    { id: "shop_hair", group: "shorts", category: "쇼핑 쇼츠", title: "헹구지 않는 트리트먼트, 한혜진이 10년 쓴 이유", who: "한혜진 · 헤어 리페어", duration: 18.2,
+    { id: "shop_hair", poster: "poster_b.jpg", group: "shorts", category: "쇼핑 쇼츠", title: "헹구지 않는 트리트먼트, 한혜진이 10년 쓴 이유", who: "한혜진 · 헤어 리페어", duration: 18.2,
       credit: "원본: 한혜진 Han Hye Jin YouTube", drive: "https://drive.google.com/file/d/1jucIgpUhQYIpbMLGbxWEjXfA9dRDt4wT/view" },
-    { id: "shop_cream", group: "shorts", category: "쇼핑 쇼츠", title: "로션이 겉돌던 여름, 꾸덕한 크림을 고른 이유", who: "안소희 · 바디크림", duration: 18.1,
+    { id: "shop_cream", poster: "poster_b.jpg", group: "shorts", category: "쇼핑 쇼츠", title: "로션이 겉돌던 여름, 꾸덕한 크림을 고른 이유", who: "안소희 · 바디크림", duration: 18.1,
       credit: "원본: 안소희 YouTube", drive: "https://drive.google.com/file/d/1Sejxd7I8puK3iFvhev3UG3hF54PRp_z5/view" },
-    { id: "lol_oner", group: "shorts", category: "게임 쇼츠", title: "ONER vs CANYON", who: "LoL 정글러 비교 · 플레이 하이라이트", duration: 34.8,
+    { id: "lol_oner", poster: "poster_b.jpg", group: "shorts", category: "게임 쇼츠", title: "ONER vs CANYON", who: "LoL 정글러 비교 · 플레이 하이라이트", duration: 34.8,
       credit: "경기 화면: LoL Esports 공식 영상" },
-    { id: "lol_zeka", group: "shorts", category: "게임 쇼츠", title: "ZEKA vs CHOVY", who: "LoL 미드라이너 비교 · 플레이 하이라이트", duration: 34.2,
+    { id: "lol_zeka", poster: "poster_b.jpg", group: "shorts", category: "게임 쇼츠", title: "ZEKA vs CHOVY", who: "LoL 미드라이너 비교 · 플레이 하이라이트", duration: 34.2,
       credit: "경기 화면: LoL Esports 공식 영상" },
-    { id: "variety_banter", group: "wide", category: "예능", title: "마피아 끝나고 시작된 민속놀이 대결", who: "37분 35초 야외방송을 1분 21초로 재편집", duration: 80.6,
+    { id: "variety_banter", poster: "poster_b.jpg", group: "wide", category: "예능", title: "마피아 끝나고 시작된 민속놀이 대결", who: "37분 35초 야외방송을 1분 21초로 재편집", duration: 80.6,
       credit: "원본: 김찌릉TV 종합게임방송 (CC BY)", source: "https://www.youtube.com/watch?v=7sxDhnL3JSo" },
-    { id: "vlog_busan", group: "wide", category: "브이로그", title: "부산 여행 브이로그", who: "무편집 6분 9초 원본을 2분 18초로 · 컷, 자막, 음악, 색보정", duration: 138.1,
+    { id: "vlog_busan", poster: "poster_b.jpg", group: "wide", category: "브이로그", title: "부산 여행 브이로그", who: "무편집 6분 9초 원본을 2분 18초로 · 컷, 자막, 음악, 색보정", duration: 138.1,
       credit: "원본: 이소리 저소리 (CC BY) · 음악: Bossa Antigua, Kevin MacLeod (CC BY 3.0)", source: "https://www.youtube.com/watch?v=8rnKqib3s80" },
     // 롱폼 「미쿠의 역사」: url에 유튜브 링크를 넣으면 카드가 나타납니다
     { id: "miku", group: "wide", category: "롱폼", title: "미쿠의 역사", who: "내 채널 롱폼", duration: 0, credit: "", url: "" },
@@ -758,7 +758,7 @@ function card(w) {
   const base = `media/${w.id}/`;
   const meta = w.duration ? `${esc(w.who)} · ${mmss(w.duration)}` : esc(w.who);
   const inner = w.duration
-    ? `<img src="${base}cover.jpg" alt="" loading="lazy">
+    ? `<img src="${base}${w.poster || 'cover.jpg'}" alt="" loading="lazy">
        <span class="sprite" style="background-image:url('${base}sprite.jpg');background-size:${SPRITE_COLS * 100}% ${SPRITE_N / SPRITE_COLS * 100}%"></span>
        <span class="play-ico" aria-hidden="true"></span><span class="burn">${tc(0)}</span><span class="scrub"><i></i></span>`
     : `<span class="play-ico" aria-hidden="true"></span>`;
@@ -807,7 +807,7 @@ function openWork(w) {
   const detail = $("#modalClipDetail");
   detail.hidden = w.collection !== "streamer";
   detail.innerHTML = w.collection === "streamer" ? `${esc(w.description)}<span class="clip-quality">${esc(w.webQuality)} · 전체 편집본 ${mmss(w.originalDuration)}</span>` : "";
-  mVideo.poster = `media/${w.id}/cover.jpg`;
+  mVideo.poster = `media/${w.id}/${w.poster || "cover.jpg"}`;
   mVideo.src = `media/${w.id}/play.mp4`;
   modal.hidden = false;
   document.body.classList.add("modal-open"); root.classList.add("modal-open");

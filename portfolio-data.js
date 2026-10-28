@@ -52,7 +52,8 @@ window.STREAMER_PORTFOLIO = {
       "description": "상황을 짚는 자막부터 반전과 리액션까지, 짧게 이어 붙인 쇼츠 발췌본.",
       "webQuality": "720p · 약 30초 발췌",
       "number": 2,
-      "cardTitle": "\"팀원이 이겨줄텐데\" 진짜 팀원이 펜타킬"
+      "cardTitle": "\"팀원이 이겨줄텐데\" 진짜 팀원이 펜타킬",
+      "poster": "poster_b.jpg"
     },
     {
       "id": "stream_lol_shortB_v02",
@@ -70,7 +71,8 @@ window.STREAMER_PORTFOLIO = {
       "description": "상황을 짚는 자막부터 반전과 리액션까지, 짧게 이어 붙인 쇼츠 발췌본.",
       "webQuality": "720p · 약 30초 발췌",
       "number": 3,
-      "cardTitle": "차 긁은 범인 잡으러 갔다가 양심 없는 사람 됨"
+      "cardTitle": "차 긁은 범인 잡으러 갔다가 양심 없는 사람 됨",
+      "poster": "poster_b.jpg"
     },
     {
       "id": "stream_pubg_long_v03",
@@ -124,7 +126,8 @@ window.STREAMER_PORTFOLIO = {
       "description": "상황을 짚는 자막부터 반전과 리액션까지, 짧게 이어 붙인 쇼츠 발췌본.",
       "webQuality": "720p · 약 30초 발췌",
       "number": 2,
-      "cardTitle": "\"이기면 미안하다\"던 언니의 최후"
+      "cardTitle": "\"이기면 미안하다\"던 언니의 최후",
+      "poster": "poster_b.jpg"
     },
     {
       "id": "stream_pubg_shortB_v03",
@@ -142,7 +145,8 @@ window.STREAMER_PORTFOLIO = {
       "description": "상황을 짚는 자막부터 반전과 리액션까지, 짧게 이어 붙인 쇼츠 발췌본.",
       "webQuality": "720p · 약 30초 발췌",
       "number": 3,
-      "cardTitle": "12점만 넘기면 이기는 마지막 판"
+      "cardTitle": "12점만 넘기면 이기는 마지막 판",
+      "poster": "poster_b.jpg"
     },
     {
       "id": "stream_valorant_long_v02",
@@ -196,7 +200,8 @@ window.STREAMER_PORTFOLIO = {
       "description": "상황을 짚는 자막부터 반전과 리액션까지, 짧게 이어 붙인 쇼츠 발췌본.",
       "webQuality": "720p · 약 30초 발췌",
       "number": 2,
-      "cardTitle": "이걸 피했다고??"
+      "cardTitle": "이걸 피했다고??",
+      "poster": "poster_b.jpg"
     },
     {
       "id": "stream_valorant_shortB_v02",
@@ -214,7 +219,8 @@ window.STREAMER_PORTFOLIO = {
       "description": "상황을 짚는 자막부터 반전과 리액션까지, 짧게 이어 붙인 쇼츠 발췌본.",
       "webQuality": "720p · 약 30초 발췌",
       "number": 3,
-      "cardTitle": "한 판만 이기면 불멸이었다고??"
+      "cardTitle": "한 판만 이기면 불멸이었다고??",
+      "poster": "poster_b.jpg"
     },
     {
       "id": "stream_overwatch_long_v02",
@@ -268,7 +274,8 @@ window.STREAMER_PORTFOLIO = {
       "description": "상황을 짚는 자막부터 반전과 리액션까지, 짧게 이어 붙인 쇼츠 발췌본.",
       "webQuality": "720p · 약 30초 발췌",
       "number": 2,
-      "cardTitle": "골드라고 놀렸더니 소금 후원까지 옴ㅋㅋ"
+      "cardTitle": "골드라고 놀렸더니 소금 후원까지 옴ㅋㅋ",
+      "poster": "poster_b.jpg"
     },
     {
       "id": "stream_overwatch_shortB_v02",
@@ -286,7 +293,8 @@ window.STREAMER_PORTFOLIO = {
       "description": "상황을 짚는 자막부터 반전과 리액션까지, 짧게 이어 붙인 쇼츠 발췌본.",
       "webQuality": "720p · 약 30초 발췌",
       "number": 3,
-      "cardTitle": "졌는데 최고의 플레이는 나ㅋㅋ (모이라 9연속 처치)"
+      "cardTitle": "졌는데 최고의 플레이는 나ㅋㅋ (모이라 9연속 처치)",
+      "poster": "poster_b.jpg"
     }
   ],
   "games": [

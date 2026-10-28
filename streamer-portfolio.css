@@ -99,3 +99,6 @@ body { margin:0; }
   .thumb-dialog-footer { align-items:flex-start; }
 }
 @media(prefers-reduced-motion:reduce) { .thumbnail-card img { transition:none; } }
+
+/* Keep designed poster titles inside their original safe margins. */
+.work .thumb img[src$="poster_b.jpg"], .work:hover .thumb img[src$="poster_b.jpg"] { transform:none; }

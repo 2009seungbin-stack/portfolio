@@ -12,7 +12,7 @@
     const base = `media/${w.id}/`;
     const long = w.group === 'wide';
     return `<button type="button" class="work" data-id="${esc(w.id)}" aria-label="${esc(w.cardTitle || w.title)} 약 30초 재생" data-cursor="label" data-label="PLAY">
-      <span class="thumb"><img src="${base}cover.jpg" alt="" loading="lazy" width="${long ? 1280 : 432}" height="${long ? 720 : 768}">
+      <span class="thumb"><img src="${base}${w.poster || 'cover.jpg'}" alt="" loading="lazy" width="${long ? 1280 : 720}" height="${long ? 720 : 1280}">
       <span class="sprite" style="background-image:url('${base}sprite.jpg');background-size:800% 500%"></span>
       <span class="play-ico" aria-hidden="true"></span><span class="burn">${tc(0)}</span><span class="scrub"><i></i></span>
       <span class="clip-length">${mmss(w.duration)}</span></span>
