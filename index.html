@@ -3,7 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>정승빈 편집실</title>
+<title>정승빈 편집실 · 게임 편집과 썸네일</title>
+<meta name="description" content="정승빈 영상 편집 포트폴리오. 롤·배그·발로란트·오버워치 하이라이트, 쇼츠와 썸네일을 30초 발췌 영상으로 확인하세요.">
+<meta property="og:title" content="정승빈 편집실">
+<meta property="og:description" content="게임 하이라이트부터 쇼츠, 썸네일까지. 실제 작업물을 30초로 확인하세요.">
+<meta property="og:image" content="https://2009seungbin-stack.github.io/portfolio/media/stream_lol_long_v02/cover.jpg">
+<meta property="og:type" content="website">
+<script src="portfolio-data.js?v=20261029"></script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -367,6 +373,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
 </style>
+<link rel="stylesheet" href="streamer-portfolio.css?v=20261029">
 </head>
 <body>
 
@@ -376,11 +383,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   <div class="wrap">
     <a class="brand" href="#hero" data-cursor="link"><span data-c="nameLatin">SEUNGBIN</span><i>.</i>EDIT</a>
     <nav class="nav" aria-label="섹션">
-      <a href="#works" data-cursor="link">작업물</a>
+      <a href="#streamer" data-cursor="link">게임 편집</a>
+      <a href="#thumbnails" data-cursor="link">썸네일</a>
+      <a href="#works" data-cursor="link">다른 작업</a>
       <a href="#type" data-cursor="link">타이포</a>
-      <a href="#revisions" data-cursor="link">빠른 수정</a>
-      <a href="#game" data-cursor="link">잘라보기</a>
-      <a href="#qc" data-cursor="link">검수</a>
     </nav>
     <a class="btn primary" href="#contact" data-magnetic data-cursor="link">문의하기</a>
   </div>
@@ -391,17 +397,67 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
   <section class="hero" id="hero">
     <div class="hero-head" id="heroHead" aria-hidden="true"><output id="heroTc">00:00:18:18</output></div>
     <div class="wrap">
+      <div class="hero-layout">
       <h1 class="hero-title" aria-label="Cut fast. Frame accurate.">
         <span class="line" aria-hidden="true"><span data-split>Cut fast</span><span class="dot" data-split>.</span></span>
         <span class="line indent" aria-hidden="true"><span class="outline" data-split>Frame</span></span>
         <span class="line" aria-hidden="true"><span data-split>Accurate</span><span class="dot" data-split>.</span></span>
       </h1>
+      <a class="hero-preview" href="#streamer" aria-label="게임 편집 30초 발췌본 보기" data-cursor="label" data-label="PLAY">
+        <img src="media/stream_lol_long_v02/cover.jpg" width="1280" height="720" alt="진짜 펜타킬 · 실제 게임 장면과 스트리머 리액션으로 만든 B안 썸네일" fetchpriority="high">
+        <span><b>게임 편집 + 썸네일</b><i>30초로 보기 ↗</i></span>
+      </a>
+      </div>
       <div class="hero-foot">
-        <p class="hero-ko" data-fade>빠르게 자르고, 재밌게 붙이고, 바로 고칩니다.<br><span><span data-c="name">정승빈</span> · <span data-c="tagline">쇼핑 쇼츠 · 예능 · 게임 · 브이로그</span></span></p>
+        <p class="hero-ko" data-fade>재밌는 순간을 고르고,<br>끝까지 보게 편집합니다.<br><span><span data-c="name">정승빈</span> · <span data-c="tagline">게임 하이라이트 · 쇼츠 · 썸네일</span></span></p>
         <div class="cta" data-fade>
-          <a class="btn primary" href="#works" data-magnetic data-cursor="link">작업물 보기 <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn primary" href="#streamer" data-magnetic data-cursor="link">30초 작업물 보기 <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <section class="sec streamer" id="streamer" aria-labelledby="streamerTitle">
+    <div class="wrap">
+      <p class="section-eyebrow">01 / STREAMER HIGHLIGHTS</p>
+      <h2 class="sec-title" id="streamerTitle">게임의 맥락은 살리고,<br><em>재밌는 순간은 더 크게.</em></h2>
+      <p class="section-intro">롤·배그·발로란트·오버워치. 각 게임의 롱폼 2편과 쇼츠 2편에서<br>반전과 리액션이 있는 구간을 약 30초씩 골랐습니다.</p>
+      <div class="portfolio-toolbar">
+        <div class="game-tabs" role="tablist" aria-label="게임별 편집 작업">
+          <button class="game-tab" type="button" role="tab" id="tab-lol" data-game="lol" aria-controls="streamerWorks" aria-selected="true">리그 오브 레전드</button>
+          <button class="game-tab" type="button" role="tab" id="tab-pubg" data-game="pubg" aria-controls="streamerWorks" aria-selected="false" tabindex="-1">배틀그라운드</button>
+          <button class="game-tab" type="button" role="tab" id="tab-valorant" data-game="valorant" aria-controls="streamerWorks" aria-selected="false" tabindex="-1">발로란트</button>
+          <button class="game-tab" type="button" role="tab" id="tab-overwatch" data-game="overwatch" aria-controls="streamerWorks" aria-selected="false" tabindex="-1">오버워치</button>
+        </div>
+        <p class="collection-count" id="streamerSelection" aria-live="polite"></p>
+      </div>
+      <div id="streamerWorks" role="tabpanel" aria-labelledby="tab-lol"></div>
+      <p class="portfolio-note">원본 방송으로 만든 개인 재편집 샘플입니다. 카드 선택 시 720p 발췌본이 재생됩니다.</p>
+    </div>
+  </section>
+
+  <section class="sec thumbnail-section" id="thumbnails" aria-labelledby="thumbnailTitle">
+    <div class="wrap">
+      <p class="section-eyebrow">02 / THUMBNAIL DESIGN</p>
+      <h2 class="sec-title" id="thumbnailTitle">누르기 전부터<br><em>무슨 장면인지.</em></h2>
+      <p class="section-intro">영상 속 실제 표정과 결과 화면을 골라, 한 장으로 이야기를 만듭니다.<br>편집부터 썸네일까지 같은 흐름으로 작업합니다.</p>
+      <div class="thumbnail-feature">
+        <figure class="thumbnail-preview">
+          <div class="compare-controls" role="group" aria-label="썸네일 구성 비교">
+            <button class="compare-control" type="button" data-compare="before" aria-pressed="false">기존 구성</button>
+            <button class="compare-control" type="button" data-compare="after" aria-pressed="true">B안</button>
+          </div>
+          <img id="thumbnailCompareImage" src="media/stream_lol_long_v02/thumbnail.jpg" loading="lazy" width="1280" height="720" alt="B안: 실제 펜타킬 화면과 크게 배치한 크캣의 리액션">
+          <figcaption id="thumbnailCompareCaption">B안 · 실제 표정 + 펜타킬 근거 화면 + 핵심 단어 강조</figcaption>
+        </figure>
+        <ol class="thumbnail-principles">
+          <li><strong>장면부터 고릅니다.</strong><p>실제 영상의 표정, 점수와 결과 화면을 사용합니다.</p></li>
+          <li><strong>핵심만 한 줄로.</strong><p>짧은 문구 안에서 중요한 단어 하나를 강조합니다.</p></li>
+          <li><strong>작게 봐도 읽히게.</strong><p>휴대폰 목록 크기에서 얼굴과 글자의 크기를 확인합니다.</p></li>
+        </ol>
+      </div>
+      <div class="thumbnail-gallery" id="thumbnailGallery" aria-label="게임 롱폼 썸네일 8장"></div>
     </div>
   </section>
 
@@ -425,7 +481,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 
   <section class="sec" id="stats" style="padding-bottom:0">
     <div class="wrap">
-      <h2 class="sec-title" data-reveal>받자마자 <em>자릅니다</em></h2>
+      <h2 class="sec-title" data-reveal>긴 호흡도,<br><em>짧은 한 장면도.</em></h2>
       <div class="stats" id="statList"></div>
     </div>
   </section>
@@ -529,11 +585,23 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
       <span class="cat" id="modalCat"></span>
       <h3 id="modalTitle"></h3>
       <p id="modalWho"></p>
+      <p class="clip-detail" id="modalClipDetail" hidden></p>
       <p class="credit" id="modalCredit"></p>
       <a class="btn drive" id="modalDrive" href="#" target="_blank" rel="noopener" hidden>원본 화질로 보기 ↗</a>
     </div>
   </div>
 </div>
+
+
+<dialog class="thumb-dialog" id="thumbnailDialog" aria-labelledby="thumbnailDialogTitle">
+  <div class="thumb-dialog-head"><h3 id="thumbnailDialogTitle"></h3><button class="thumb-dialog-close" type="button" id="thumbnailDialogClose" aria-label="썸네일 닫기">×</button></div>
+  <img id="thumbnailDialogImage" alt="" width="1280" height="720">
+  <div class="thumb-dialog-footer">
+    <p id="thumbnailDialogMeta"></p>
+    <div class="thumb-dialog-nav"><button id="thumbnailPrevious" type="button" aria-label="이전 썸네일">←</button><span id="thumbnailDialogCount" aria-live="polite"></span><button id="thumbnailNext" type="button" aria-label="다음 썸네일">→</button></div>
+    <button class="btn primary" type="button" id="thumbnailWatch">이 영상 30초 보기 ↗</button>
+  </div>
+</dialog>
 
 <div class="sample-note" id="sampleNote" hidden>
   연락받을 이메일 주소를 하단 <code>CONFIG</code>의 <code>email</code>에 넣어주세요.
@@ -552,7 +620,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wr
 const CONFIG = {
   name: "정승빈",
   nameLatin: "SEUNGBIN",
-  tagline: "쇼핑 쇼츠 · 예능 · 게임 · 브이로그 · 모션 타이포",
+  tagline: "게임 하이라이트 · 쇼츠 · 썸네일",
   email: "seungbinbugae@gmail.com",
   discord: "war_bin",
   hours: "오전 7시 ~ 오후 11시",
@@ -561,8 +629,8 @@ const CONFIG = {
   cutDemo: { rawSec: 2255.2, finalSec: 80.6, label: "야외방송 재편집" },
 
   stats: [
-    { value: "23", unit: "분", label: "37분 원본 받고 첫 편집본까지" },
-    { value: "10", unit: "편", label: "하루 작업 가능량" },
+    { value: "8", unit: "편", label: "게임 롱폼 편집 · 4개 게임" },
+    { value: "8", unit: "편", label: "방송 하이라이트 쇼츠" },
   ],
 
   // 빠른 수정: 민속놀이 대결 편의 실제 버전별 렌더 시각
@@ -583,6 +651,7 @@ const CONFIG = {
   game: { work: "variety_banter", frames: [1, 4, 8, 12, 16, 20, 24, 28, 32, 35] },
 
   works: [
+    ...window.STREAMER_PORTFOLIO.works,
     { id: "shop_spinner", group: "shorts", category: "쇼핑 쇼츠", title: "뚜껑만 바꿨는데 탈수기가 채칼이 됐어요", who: "최은경 · 야채탈수기·채칼", duration: 18.9,
       credit: "원본: 최은경의 관리사무소", drive: "https://drive.google.com/file/d/1QdWif6mOuRFlftc9HzVSj1B_wH_IyNrC/view" },
     { id: "shop_hair", group: "shorts", category: "쇼핑 쇼츠", title: "헹구지 않는 트리트먼트, 한혜진이 10년 쓴 이유", who: "한혜진 · 헤어 리페어", duration: 18.2,
@@ -655,7 +724,7 @@ function tc(frames) {
   return `${pad(Math.floor(s / 3600))}:${pad(Math.floor(s / 60) % 60)}:${pad(s % 60)}:${pad(f)}`;
 }
 const hms = sec => `${pad(Math.floor(sec / 3600))}:${pad(Math.floor(sec / 60) % 60)}:${pad(Math.floor(sec % 60))}`;
-const mmss = sec => `${Math.floor(sec / 60)}:${pad(Math.round(sec % 60))}`;
+const mmss = sec => { const total = Math.round(sec); return `${Math.floor(total / 60)}:${pad(total % 60)}`; };
 function koDur(sec) {
   const h = Math.floor(sec / 3600), m = Math.floor(sec / 60) % 60, s = Math.round(sec % 60);
   return [h && `${h}시간`, m && `${m}분`, s && `${s}초`].filter(Boolean).join(" ") || "0초";
@@ -665,7 +734,7 @@ const objParticle = word => { const c = word.charCodeAt(word.length - 1) - 0xac0
 
 /* 기본 정보 */
 $$("[data-c]").forEach(el => { const v = CONFIG[el.dataset.c]; if (v) el.textContent = v; });
-document.title = `${CONFIG.name} 편집실`;
+document.title = `${CONFIG.name} 편집실 · 게임 편집과 썸네일`;
 const emailMissing = !CONFIG.email || CONFIG.email === "your@email.com";
 $("#sampleNote").hidden = !emailMissing;
 $("#sampleClose").addEventListener("click", () => { $("#sampleNote").hidden = true; });
@@ -698,7 +767,7 @@ function card(w) {
   return w.url ? `<a ${attrs} href="${esc(w.url)}" target="_blank" rel="noopener">${body}</a>`
                : `<button type="button" ${attrs} aria-label="${esc(w.title)} 재생">${body}</button>`;
 }
-const shorts = visibleWorks.filter(w => w.group === "shorts"), wides = visibleWorks.filter(w => w.group === "wide");
+const shorts = visibleWorks.filter(w => w.group === "shorts" && w.collection !== "streamer"), wides = visibleWorks.filter(w => w.group === "wide" && w.collection !== "streamer");
 $("#workGroups").innerHTML = `
   <div class="group"><div class="group-head"><h3>롱폼</h3><span>예능 · 브이로그</span></div><div class="wides">${wides.map(card).join("")}</div></div>
   <div class="group"><div class="group-head"><h3>쇼츠</h3><span>쇼핑 · 게임</span></div><div class="shorts">${shorts.map(card).join("")}</div></div>`;
@@ -735,6 +804,9 @@ function openWork(w) {
   $("#modalWho").textContent = `${w.who} · ${mmss(w.duration)}`;
   $("#modalCredit").innerHTML = w.source ? `<a href="${esc(w.source)}" target="_blank" rel="noopener">${esc(w.credit)} ↗</a>` : esc(w.credit || "");
   const d = $("#modalDrive"); d.hidden = !w.drive; if (w.drive) d.href = w.drive;
+  const detail = $("#modalClipDetail");
+  detail.hidden = w.collection !== "streamer";
+  detail.innerHTML = w.collection === "streamer" ? `${esc(w.description)}<span class="clip-quality">${esc(w.webQuality)} · 전체 편집본 ${mmss(w.originalDuration)}</span>` : "";
   mVideo.poster = `media/${w.id}/cover.jpg`;
   mVideo.src = `media/${w.id}/play.mp4`;
   modal.hidden = false;
@@ -1151,5 +1223,6 @@ if (anim) {
   addEventListener("load", () => ScrollTrigger.refresh());
 }
 </script>
+<script src="streamer-portfolio.js?v=20261029"></script>
 </body>
 </html>
