@@ -282,7 +282,7 @@
       </div></article>`;
   }
   if (style.length) {
-    $("#styleTabs").innerHTML = style.map((s, i) => `<button class="tab" type="button" role="tab" data-i="${i}" aria-selected="false" tabindex="-1">${esc(s.genre)} · ${esc(s.styleName)}</button>`).join("");
+    $("#styleTabs").innerHTML = style.map((s, i) => `<button class="tab" type="button" role="tab" data-i="${i}" aria-selected="false" tabindex="-1">${esc(s.styleName || s.genre)}</button>`).join("");
     $("#styleTabs").addEventListener("click", e => { const t = e.target.closest("[data-i]"); if (t) stylePanel(+t.dataset.i); });
     $("#styleTabs").addEventListener("keydown", e => {
       const i = $$("#styleTabs .tab").findIndex(t => t.getAttribute("aria-selected") === "true");
@@ -314,7 +314,7 @@
       const b = thumbAB === "b" && w.thumbnailB;
       return `<button type="button" class="thumbnail-card" data-thumb="${i}" aria-label="${esc(w.cardTitle)} 썸네일 ${b ? "B안" : "A안"} 크게 보기">
         <span class="frame"><img src="${esc(b ? w.thumbnailB : w.thumbnail.src)}" width="1280" height="720" loading="lazy" draggable="false" alt="${esc(w.cardTitle)} 썸네일 ${b ? "B안" : "A안"}">${w.thumbnailB ? `<span class="ab-tag">${b ? "B" : "A"}</span>` : ""}</span>
-        <span class="cap"><b>${esc(genreLabel[w.genre] || "")} · ${esc(w.styleRef ? w.styleRef.name : "")}</b><span>${esc(w.cardTitle)}</span></span></button>`;
+        <span class="cap"><b>${esc((w.styleRef && w.styleRef.name) || genreLabel[w.genre] || "")}</b><span>${esc(w.cardTitle)}</span></span></button>`;
     }).join("");
     $("#thumbMoreRow").hidden = shown.length >= thumbList.length;
   }
@@ -339,7 +339,7 @@
     img.alt = `${w.cardTitle} 썸네일 ${dlgAB.toUpperCase()}안`;
     $("#thumbnailDialogTitle").textContent = w.cardTitle;
     $("#thumbnailDialogCount").textContent = `${thumbIndex + 1} / ${thumbList.length}`;
-    $("#thumbnailDialogMeta").textContent = `${genreLabel[w.genre] || ""} · ${w.styleRef ? w.styleRef.name : ""}${w.thumbnailB ? ` · ${dlgAB.toUpperCase()}안` : ""}`;
+    $("#thumbnailDialogMeta").textContent = `${(w.styleRef && w.styleRef.name) || genreLabel[w.genre] || ""}${w.thumbnailB ? ` · ${dlgAB.toUpperCase()}안` : ""}`;
     $("#thumbAB").hidden = !w.thumbnailB;
     $$("#thumbAB button").forEach(b => b.setAttribute("aria-pressed", b.dataset.ab === dlgAB));
   }
