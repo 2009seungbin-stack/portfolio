@@ -1,7 +1,7 @@
 /* 히어로 쇼릴 · 장르 챕터 · 전체 그리드 · 스타일 재현 · 썸네일 · 크레딧.
    데이터는 portfolio-data.js(window.PORTFOLIO), 문구는 site-copy.js.
    index.html 안의 스크립트가 먼저 실행되어 $, $$, esc, tc, mmss, clamp01, FPS, reduce, reveal, openWork,
-   workById, genreLabel, styleSuffix, sourceLine, DATA, COPY를 만든다.
+   workById, genreLabel, sourceLine, DATA, COPY를 만든다.
    영상 규칙: 히어로 하나 + 그 밖에는 한 번에 한 편만 재생. 재생 창이 열리면 나머지는 모두 멈춘다. */
 (() => {
   const works = DATA.works || [];
@@ -64,7 +64,7 @@
 
   function chapter(w, i) {
     const c = w.clip, s = w.short, own = w.kind === "개인 작업";
-    const name = w.styleRef ? w.styleRef.name : "", ref = name ? name + styleSuffix(name) : "";
+    const ref = w.styleRef ? w.styleRef.name : "";
     const side = s && s.status === "ready"
       ? `<button type="button" class="ch-short" data-id="${esc(w.id)}" data-mode="short" aria-label="${esc(w.cardTitle)} 세로 쇼츠 보기">
           <span class="thumb"><img src="${esc(s.cover)}" alt="" loading="lazy" draggable="false" width="720" height="1280">${scrubLayer(s.sprite)}</span>
@@ -175,7 +175,7 @@
         ${scrubLayer(c.sprite)}<span class="play-ico" aria-hidden="true"></span>${len}${badge}</span>
       </button>
       <div class="wmeta">
-        <p class="wstyle"><b>${esc(name)}${esc(styleSuffix(name))}</b><span>${esc(genreLabel[w.genre] || "")}</span></p>
+        <p class="wstyle"><b>${esc(name)}</b><span>${esc(genreLabel[w.genre] || "")}</span></p>
         <h4>${esc(w.cardTitle)}</h4>
         <p class="wsrc">${srcLine(w)}</p>
         <ul class="role-chips">${(w.role || []).map(r => `<li>${esc(r)}</li>`).join("")}</ul>
@@ -261,7 +261,7 @@
       return `<rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" fill="${TONE[b.tone]}" fill-opacity="${b.tone === "c" ? .12 : .28}" stroke="${TONE[b.tone]}" stroke-width="6"${b.dashed ? ' stroke-dasharray="24 14"' : ""}/>
         <text x="${x}" y="${y}" text-anchor="${anchor}" font-size="${fs}" font-weight="700" fill="${b.tone === "a" ? "#ffcf73" : TONE[b.tone]}" paint-order="stroke" stroke="#0e0e10" stroke-width="10">${esc(b.label)}</text>`;
     }).join("");
-    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(s.ref)}에서 측정한 자막·그래픽 배치도 (화면 없이 좌표만)">
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(s.styleName)} 레퍼런스에서 측정한 자막·그래픽 배치도 (화면 없이 좌표만)">
       <rect width="${W}" height="${H}" fill="#0e0e10"/>
       <g stroke="#26262b" stroke-width="2">${[1, 2, 3].map(k => `<line x1="${W * k / 4}" y1="0" x2="${W * k / 4}" y2="${H}"/><line x1="0" y1="${H * k / 4}" x2="${W}" y2="${H * k / 4}"/>`).join("")}</g>
       ${boxes}<text x="${W - 24}" y="${H - 24}" text-anchor="end" font-size="34" fill="#8e8981">${W}×${H}</text></svg>`;
@@ -270,7 +270,7 @@
     const s = style[i];
     $$("#styleTabs .tab").forEach((t, k) => { t.setAttribute("aria-selected", k === i); t.tabIndex = k === i ? 0 : -1; });
     $("#stylePanel").innerHTML = `<article class="style-card">
-      <header class="style-head"><p class="style-genre">${esc(s.genre)} · <b>${esc(s.styleName)}</b> 스타일</p><p class="style-ref">레퍼런스: ${esc(s.ref)} — <em>측정값만 표기, 화면 미수록</em></p></header>
+      <header class="style-head"><p class="style-genre">편집 문법 · <b>${esc(s.styleName)}</b></p><p class="style-ref">${esc(s.ref)} — <em>측정값만 표기, 화면·채널명 미수록</em></p></header>
       <div class="style-body">
         <div class="style-measure">
           <figure class="style-diagram">${diagram(s)}<figcaption>레퍼런스에서 잰 배치 (1920×1080 기준 좌표) · 실선은 같은 순간, 점선은 다른 순간에 나오는 요소</figcaption></figure>

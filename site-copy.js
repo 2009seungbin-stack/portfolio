@@ -16,7 +16,7 @@ window.SITE_COPY = {
    "heroCta": "작품 보기",
    "worksEyebrow": "01 / WORKS BY GENRE",
    "worksTitle": "장르가 바뀌면,<br><em>편집 문법도 바뀝니다.</em>",
-   "worksIntro": "장르마다 대표작 한 편씩. 레퍼런스 채널에서 잰 규칙과, 그 규칙으로 만든 장면을 나란히 놓았습니다.<br>아래로 내리면 전체 작품을 장르별로 볼 수 있어요.",
+   "worksIntro": "장르마다 대표작 한 편씩. 인기 채널에서 잰 편집 규칙과, 그 규칙으로 만든 장면을 나란히 놓았습니다.<br>아래로 내리면 전체 작품을 장르별로 볼 수 있어요.",
    "defaultGenre": "all"
   },
   "game": {
